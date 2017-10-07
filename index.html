@@ -23,14 +23,30 @@
 		<script>
       graphic = init_scene(document.getElementById('container'))
 			models = load_objects(graphic.scene, [
-				{
-					file: "models/furniture3_1.obj",
-					texture: "textures/fabrbump.jpg"
-				},
 				// {
-				// 	file: "models/splits/kosan.obj",
+				// 	file: "models/furniture3_12.obj",
 				// 	texture: "textures/fabrbump.jpg"
 				// },
+				{
+					file: "models/splits/poshti.obj",
+					texture: "textures/2.jpg"
+				},
+				{
+					file: "models/splits/kosan.obj",
+					texture: "textures/1.jpg"
+				},
+				{
+					file: "models/splits/frame.obj",
+					texture: "textures/2.jpg"
+				},
+				{
+					file: "models/splits/ziri.obj",
+					texture: "textures/2.jpg"
+				},
+				{
+					file: "models/splits/daste.obj",
+					texture: "textures/3.jpg"
+				},
 			]);
 		  var animate = function() {
 		    requestAnimationFrame( animate );
