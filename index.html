@@ -6,7 +6,7 @@
 		<style>
 			body { margin: 0; }
 			canvas { width: 100%; height: 100% }
-      #container { width: 1920px; height: 1080px;}
+      #container { width: 500px; height: 400px;}
 		</style>
 	</head>
 	<body>
@@ -20,28 +20,28 @@
 		<script src="js/load_objects.js"></script>
 		<script>
 			// try to load the models first
-			models = load_objects([
-					{
+			models = load_objects({
+					"poshti": {
 						file: "models/splits2/poshti.obj",
 						texture: "textures/2.jpg"
 					},
-					{
+					"ziri": {
 						file: "models/splits2/ziri.obj",
 						texture: "textures/2.jpg"
 					},
-					{
+					"frame": {
 						file: "models/splits2/frame.obj",
 						texture: "textures/2.jpg"
 					},
-					{
-						file: "models/splits2/kosan.obj",
-						texture: "textures/1.jpg"
-					},
-					{
+					// {
+					// 	file: "models/splits2/kosan.obj",
+					// 	texture: "textures/1.jpg"
+					// },
+					"daste": {
 						file: "models/splits2/daste.obj",
 						texture: "textures/3.jpg"
 					},
-				],
+				},
 				function(objects) { display(objects); }
 			);
 			function reset_camera(graphic) {
@@ -56,6 +56,7 @@
 				document.getElementById('container').innerHTML = ""
 	      graphic = init_scene(document.getElementById('container'))
 				reset_camera(graphic)
+				objects = loaded_models
 				for (var key in loaded_models) graphic.scene.add(loaded_models[key]);
 			  var animate = function() {
 			    requestAnimationFrame( animate );
@@ -65,6 +66,9 @@
 			  animate();
 			}
     </script>
-    <button onclick="reset_camera(graphic)">Reset Camera</button>
+		<button onclick="reset_camera(graphic)">Reset Camera</button>
+		<button onclick="set_texture(objects['poshti'], load_texture('textures/' + (Math.floor(Math.random() * 22) + 1).toString() +'.jpg'))">پشتی</button>
+		<button onclick="var txt = load_texture('textures/' + (Math.floor(Math.random() * 22) + 1).toString() +'.jpg'); set_texture(objects['ziri'], txt); set_texture(objects['frame'], txt)">زیری</button>
+		<button onclick="set_texture(objects['daste'], load_texture('textures/' + (Math.floor(Math.random() * 22) + 1).toString() +'.jpg'))">دسته</button>
 	</body>
 </html>
