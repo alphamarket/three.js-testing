@@ -6,7 +6,7 @@
 		<style>
 			body { margin: 0; }
 			canvas { width: 100%; height: 100% }
-      #container { width: 400px; height: 300px;}
+      #container { width: 1920px; height: 1080px;}
 		</style>
 	</head>
 	<body>
@@ -22,25 +22,25 @@
 			// try to load the models first
 			models = load_objects([
 					{
-						file: "models/splits/smalls/poshti.s.obj",
+						file: "models/splits/smalls/ziri2.s.obj",
 						texture: "textures/2.jpg"
 					},
-					{
-						file: "models/splits/kosan.obj",
-						texture: "textures/1.jpg"
-					},
-					{
-						file: "models/splits/frame.obj",
-						texture: "textures/2.jpg"
-					},
-					{
-						file: "models/splits/ziri.obj",
-						texture: "textures/2.jpg"
-					},
-					{
-						file: "models/splits/daste.obj",
-						texture: "textures/3.jpg"
-					},
+					// {
+					// 	file: "models/splits/kosan.obj",
+					// 	texture: "textures/1.jpg"
+					// },
+					// {
+					// 	file: "models/splits/frame.obj",
+					// 	texture: "textures/2.jpg"
+					// },
+					// {
+					// 	file: "models/splits/smalls/ziri2.s.obj",
+					// 	texture: "textures/2.jpg"
+					// },
+					// {
+					// 	file: "models/splits/daste.obj",
+					// 	texture: "textures/3.jpg"
+					// },
 				],
 				function(objects) { display(objects); }
 			);
