@@ -13,15 +13,32 @@
     <div id="container"></div>
     <script src="js/three.js"></script>
     <script src="js/OBJLoader.js"></script>
+		<script src="js/MTLLoader.js"></script>
     <script src="js/TrackballControls.js"></script>
     <script src="js/init_scene.js"></script>
     <script src="js/sample_display.js"></script>
-    <script src="js/model_display.js"></script>
 		<script src="js/webgl_detector.js"></script>
+		<script src="js/load_objects.js"></script>
+		<script src="js/load_mtls.js"></script>
 		<script>
-      scene_model = init_scene(document.getElementById('container'))
-      model_display(scene_model.scene, scene_model.camera, scene_model.renderer, "./models/furniture2.obj");
+      graphic = init_scene(document.getElementById('container'))
+			models = load_objects(graphic.scene, [
+				{
+					file: "models/furniture3_1.obj",
+					texture: "textures/fabrbump.jpg"
+				},
+				// {
+				// 	file: "models/splits/kosan.obj",
+				// 	texture: "textures/fabrbump.jpg"
+				// },
+			]);
+		  var animate = function() {
+		    requestAnimationFrame( animate );
+		    graphic.controls.update();
+		    graphic.renderer.render( graphic.scene, graphic.camera );
+		  };
+		  animate();
     </script>
-    <button onclick="scene_model.controls.reset(); scene_model.camera.position.set(0, 70, 100)">Reset Camera</button>
+    <button onclick="graphic.controls.reset(); graphic.camera.position.set(0, 70, 100)">Reset Camera</button>
 	</body>
 </html>
