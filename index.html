@@ -22,23 +22,23 @@
 			// try to load the models first
 			models = load_objects([
 					{
-						file: "models/splits/smalls/ziri.s.obj",
+						file: "models/splits2/poshti.obj",
 						texture: "textures/2.jpg"
 					},
 					{
-						file: "models/splits/kosan.obj",
+						file: "models/splits2/ziri.obj",
+						texture: "textures/2.jpg"
+					},
+					{
+						file: "models/splits2/frame.obj",
+						texture: "textures/2.jpg"
+					},
+					{
+						file: "models/splits2/kosan.obj",
 						texture: "textures/1.jpg"
 					},
 					{
-						file: "models/splits/frame.obj",
-						texture: "textures/2.jpg"
-					},
-					{
-						file: "models/splits/poshti.obj",
-						texture: "textures/2.jpg"
-					},
-					{
-						file: "models/splits/daste.obj",
+						file: "models/splits2/daste.obj",
 						texture: "textures/3.jpg"
 					},
 				],
@@ -46,7 +46,7 @@
 			);
 			function reset_camera(graphic) {
 				graphic.controls.reset();
-				graphic.camera.position.set(30, 40, 70)
+				graphic.camera.position.set(3, 4, 10)
 			}
 			function display(loaded_models){
 				if(typeof loaded_models === "undefined") {
