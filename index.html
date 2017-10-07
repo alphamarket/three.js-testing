@@ -6,55 +6,65 @@
 		<style>
 			body { margin: 0; }
 			canvas { width: 100%; height: 100% }
-      #container { width: 1869px; height: 900px;}
+      #container { width: 400px; height: 300px;}
 		</style>
 	</head>
 	<body>
-    <div id="container"></div>
+    <div id="container">Loading....</div>
     <script src="js/three.js"></script>
     <script src="js/OBJLoader.js"></script>
-		<script src="js/MTLLoader.js"></script>
     <script src="js/TrackballControls.js"></script>
     <script src="js/init_scene.js"></script>
     <script src="js/sample_display.js"></script>
 		<script src="js/webgl_detector.js"></script>
 		<script src="js/load_objects.js"></script>
-		<script src="js/load_mtls.js"></script>
 		<script>
-      graphic = init_scene(document.getElementById('container'))
-			models = load_objects(graphic.scene, [
-				// {
-				// 	file: "models/furniture3_12.obj",
-				// 	texture: "textures/fabrbump.jpg"
-				// },
-				{
-					file: "models/splits/poshti.obj",
-					texture: "textures/2.jpg"
-				},
-				{
-					file: "models/splits/kosan.obj",
-					texture: "textures/1.jpg"
-				},
-				{
-					file: "models/splits/frame.obj",
-					texture: "textures/2.jpg"
-				},
-				{
-					file: "models/splits/ziri.obj",
-					texture: "textures/2.jpg"
-				},
-				{
-					file: "models/splits/daste.obj",
-					texture: "textures/3.jpg"
-				},
-			]);
-		  var animate = function() {
-		    requestAnimationFrame( animate );
-		    graphic.controls.update();
-		    graphic.renderer.render( graphic.scene, graphic.camera );
-		  };
-		  animate();
+			// try to load the models first
+			models = load_objects([
+					{
+						file: "models/splits/smalls/poshti.s.obj",
+						texture: "textures/2.jpg"
+					},
+					{
+						file: "models/splits/kosan.obj",
+						texture: "textures/1.jpg"
+					},
+					{
+						file: "models/splits/frame.obj",
+						texture: "textures/2.jpg"
+					},
+					{
+						file: "models/splits/ziri.obj",
+						texture: "textures/2.jpg"
+					},
+					{
+						file: "models/splits/daste.obj",
+						texture: "textures/3.jpg"
+					},
+				],
+				function(objects) { display(objects); }
+			);
+			function reset_camera(graphic) {
+				graphic.controls.reset();
+				graphic.camera.position.set(30, 40, 70)
+			}
+			function display(loaded_models){
+				if(typeof loaded_models === "undefined") {
+					alert("Models has not been loaded yet....\nTry Later!")
+					return
+				}
+				document.getElementById('container').innerHTML = ""
+	      graphic = init_scene(document.getElementById('container'))
+				reset_camera(graphic)
+				for (var key in loaded_models) graphic.scene.add(loaded_models[key]);
+			  var animate = function() {
+			    requestAnimationFrame( animate );
+			    graphic.controls.update();
+			    graphic.renderer.render( graphic.scene, graphic.camera );
+			  };
+			  animate();
+			}
     </script>
-    <button onclick="graphic.controls.reset(); graphic.camera.position.set(0, 70, 100)">Reset Camera</button>
+    <button onclick="reset_camera(graphic)">Reset Camera</button>
 	</body>
 </html>

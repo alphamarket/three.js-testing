@@ -29,7 +29,7 @@ function init_scene(dom) {
 	controls.rotateSpeed = 1.0;
 	controls.zoomSpeed = 1.2;
 	controls.noZoom = false;
-	controls.noPan = true;
+	controls.noPan = false;
 	controls.staticMoving = true;
 	controls.dynamicDampingFactor = 0.3;
 	controls.keys = [ 65, 83, 68 ];
