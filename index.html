@@ -33,16 +33,16 @@
 						file: "models/splits2/frame.obj",
 						texture: "textures/2.jpg"
 					},
-					// {
-					// 	file: "models/splits2/kosan.obj",
-					// 	texture: "textures/1.jpg"
-					// },
+					"kosan": {
+						file: "models/splits2/kosan.obj",
+						texture: "textures/11.jpg"
+					},
 					"daste": {
 						file: "models/splits2/daste.obj",
 						texture: "textures/3.jpg"
 					},
 				},
-				function(objects) { display(objects); }
+				display
 			);
 			function reset_camera(graphic) {
 				graphic.controls.reset();
@@ -64,11 +64,20 @@
 			    graphic.renderer.render( graphic.scene, graphic.camera );
 			  };
 			  animate();
+				for (var i = 0; i < 22; i++) {
+					document.getElementById('collections').innerHTML +=
+						"<img data-id='"+(i + 1).toString()+"' src='textures/"+(i + 1).toString()+".jpg' height='50' onclick='texture_select(this)' />"
+				}
+			}
+			function texture_select($this) {
+				var id = $this.getAttribute('data-id')
+				console.log(id);
+				set_texture(objects['poshti'], load_texture('textures/' + id.toString() +'.jpg'))
 			}
     </script>
 		<button onclick="reset_camera(graphic)">Reset Camera</button>
-		<button onclick="set_texture(objects['poshti'], load_texture('textures/' + (Math.floor(Math.random() * 22) + 1).toString() +'.jpg'))">پشتی</button>
-		<button onclick="var txt = load_texture('textures/' + (Math.floor(Math.random() * 22) + 1).toString() +'.jpg'); set_texture(objects['ziri'], txt); set_texture(objects['frame'], txt)">زیری</button>
-		<button onclick="set_texture(objects['daste'], load_texture('textures/' + (Math.floor(Math.random() * 22) + 1).toString() +'.jpg'))">دسته</button>
+		<hr />
+		<div id="collections">
+		</div>
 	</body>
 </html>
